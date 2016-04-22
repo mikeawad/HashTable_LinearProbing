@@ -20,24 +20,6 @@ Modify the driver program so that you can test your delete function.
 See important hints at the end of this page.
 Submit all your code for each of the two implementations.
 
-Sample code. Note that depending on your browser settings, the code may not display correctly in your browser. But you should be able to copy the code to your local machine and view it in your C++ editor.
-
-Hash Table with Linear Probing
-
-Driver program drv_hwlp.cpp
-
-Header hash_lp.h
-
-Implementation hash_lp.cpp
-
-Hash Table with Chained Hashing
-
-Driver program drv_hwch.cpp
-
-Header hash_chn.h
-
-Implementation hash_chn.cpp
-
 Hints:
 
 It is important to realize that the insert function will allow you to add a new entry to the table, or to update an existing entry in the table.
