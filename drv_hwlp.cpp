@@ -54,7 +54,7 @@ int main( )
                       if ( found )
                       {
                          cout << "Record was found." << endl;
-                         cout << "   key            = " << setw(8)
+                         cout << "   key  = " << setw(8)
                               << rec.key << endl;
                          cout << "   data = " << setw(8)
                               << rec.data << endl << endl;

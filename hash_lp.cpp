@@ -20,10 +20,10 @@ void Table::insert( const RecordType& entry, bool del = false )
    assert( entry.key >= 0 );
 
    findIndex( entry.key, alreadyThere, index );
-    
+    //cout << "alreadyThere = " << alreadyThere << endl;
    if (alreadyThere && del)                         // <--------------------- inserting some code to modify here
    {
-        table[index].key = -1;
+        table[index].key = -2;
         table[index].data = 0;
         used--;
    }                                                // <--------------------- inserting some code to modify here
@@ -31,7 +31,7 @@ void Table::insert( const RecordType& entry, bool del = false )
    else if( alreadyThere )
       table[index] = entry;
     
-   else
+   else if (!del)
    {
       assert( size( ) < CAPACITY );
       index = hash( entry.key );
@@ -93,23 +93,30 @@ void Table::find( int key, bool& found, RecordType& result ) const
       result = table[index];
 }
 
+/// print function: prints the hash table with only valid items. i.e anything without a key == -1, -2
 void Table::print() const
 {
 	for (int i = 0; i < CAPACITY;i++)
 	{
-      if (table[i].key == -1) continue;
+      if (table[i].key == -1 || table[i].key == -2) continue;
       else
       {
-         cout << "table[" << i <<"].key = " << table[i].key << ",hash to " << hash(table[i].key) << endl;
+         cout << "table[" << i <<"].key = " << table[i].key << ", hash = " << hash(table[i].key) << endl;
          cout << "table[" << i <<"].data = " << table[i].data << endl << endl;
       }
 
 	}
 }
 
+/// erase function to delete records from the table. This works by calling the insert function with the delete bool
+/// set to true.
 void Table::erase(int key, bool& found, RecordType& result)
 {
+    int index;
     result.key = key;
+    //cout << "Debug: erase(): result.key = " << result.key << " found = " << found << endl;
+    findIndex( key, found, index );
     insert( result , true);
+    //cout << "Debug: after insert(): found = " << found << endl;
     found ? (cout << "Record deleted from table " << endl): (cout << "Record not found" << endl);
 }
