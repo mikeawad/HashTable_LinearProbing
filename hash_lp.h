@@ -46,6 +46,7 @@ public:
    void find( int key, bool& found, RecordType& result ) const;
    int size( ) const;
    void print() const;
+   void erase(int);
 private:
    // HELPER FUNCTIONS
    int hash( int key ) const;

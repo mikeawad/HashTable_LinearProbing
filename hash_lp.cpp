@@ -84,7 +84,6 @@ void Table::find( int key, bool& found, RecordType& result ) const
       result = table[index];
 }
 
-
 void Table::print() const
 {
 	for (int i = 0; i < CAPACITY;i++)
@@ -97,4 +96,9 @@ void Table::print() const
       }
 
 	}
+}
+
+void Table::erase(int key)
+{
+    
 }

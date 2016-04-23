@@ -75,6 +75,10 @@ int main( )
             case 'P': cout << "<> Printing Hash Table <> " << endl;
                       dataTable.print();
                       break;
+            case 'E': cout << "Enter key for record";
+                      cin >> key;
+                      dataTable.erase(key);
+                      break;
             default:  cout << choice << " is invalid." << endl;
         }
     }
@@ -91,5 +95,6 @@ void print_menu( )
     cout << " F   Find a record" << endl;
     cout << " S   Get the number of records" << endl;
     cout << " P   Print the records in the table" << endl;
+    cout << " E   Erase a record" << endl;
     cout << " Q   Quit this test program" << endl << endl;
 }
