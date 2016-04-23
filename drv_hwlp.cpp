@@ -44,7 +44,7 @@ int main( )
                       cin >> rec.key;
                       cout << "Enter data (int) for record: ";
                       cin >> rec.data;
-                      dataTable.insert( rec );
+                      dataTable.insert( rec , false);
                       cout << "Record was inserted in table" << endl << endl;
                       break;
             case 'F': // find
@@ -75,9 +75,9 @@ int main( )
             case 'P': cout << "<> Printing Hash Table <> " << endl;
                       dataTable.print();
                       break;
-            case 'E': cout << "Enter key for record";
+            case 'E': cout << "Enter key for record to delete: ";
                       cin >> key;
-                      dataTable.erase(key);
+                      dataTable.erase(key, found, rec);
                       break;
             default:  cout << choice << " is invalid." << endl;
         }

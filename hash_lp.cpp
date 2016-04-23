@@ -12,7 +12,7 @@ Table::Table( )
       table[i].key = -1;
 }
 
-void Table::insert( const RecordType& entry )
+void Table::insert( const RecordType& entry, bool del = false )
 {
    bool alreadyThere;
    int index;
@@ -20,8 +20,17 @@ void Table::insert( const RecordType& entry )
    assert( entry.key >= 0 );
 
    findIndex( entry.key, alreadyThere, index );
-   if( alreadyThere )
+    
+   if (alreadyThere && del)                         // <--------------------- inserting some code to modify here
+   {
+        table[index].key = -1;
+        table[index].data = 0;
+        used--;
+   }                                                // <--------------------- inserting some code to modify here
+    
+   else if( alreadyThere )
       table[index] = entry;
+    
    else
    {
       assert( size( ) < CAPACITY );
@@ -98,7 +107,9 @@ void Table::print() const
 	}
 }
 
-void Table::erase(int key)
+void Table::erase(int key, bool& found, RecordType& result)
 {
-    
+    result.key = key;
+    insert( result , true);
+    found ? (cout << "Record deleted from table " << endl): (cout << "Record not found" << endl);
 }

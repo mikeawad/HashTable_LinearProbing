@@ -42,11 +42,11 @@ class Table
 {
 public:
    Table( );
-   void insert( const RecordType& entry );
+   void insert( const RecordType& entry, bool );
    void find( int key, bool& found, RecordType& result ) const;
    int size( ) const;
    void print() const;
-   void erase(int);
+   void erase(int key, bool& found, RecordType& result);
 private:
    // HELPER FUNCTIONS
    int hash( int key ) const;
